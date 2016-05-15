@@ -30,7 +30,7 @@ class DynamicFacade
             call_user_func_array(array($subject, $name), $args);
         }
 
-        return $this;
+        return $args[0];
     }
 
     public function __get($name)
@@ -43,7 +43,7 @@ class DynamicFacade
                 }
                 $sub[]  = $subject->$name;
             }
-            $this->_sub[$name] = new \Fine\Std\DynamicFacade(array('subject' => $sub));;
+            $this->_sub[$name] = new \Fine\Std\DynamicFacade(array('subject' => $sub));
         }
 
         return $this->_sub[$name];
